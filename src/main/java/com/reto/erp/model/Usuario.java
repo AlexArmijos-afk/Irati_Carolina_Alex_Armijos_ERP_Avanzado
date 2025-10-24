@@ -5,113 +5,83 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Usuario {
-	private int idUsuario; 
-	private String usuario;
-	private String correo;
-	private String contrasena;
-	private String fotoPerfil;
+		private long id; 
+	private String nombre;
+	private String email;
+	private String passwordHash;
+	private boolean activo;
 	private LocalDate fechaAlta;
-	private LocalDate fechaBaja;
-	private Estado estado;
-	private LocalDateTime ultimoIngreso;
-	private int intentosFallidos;
+
 	//private ArrayList<Rol> roles = new ArrayList<Rol>();
 	
 	public Usuario() {
 	}
 	
-	public Usuario(int idUsuario, String usuario, String correo, String contrasena, String fotoPerfil, LocalDate fechaAlta, LocalDate fechaBaja, Estado estado,
-			LocalDateTime ultimoIngreso, int intentosFallidos) {
+	public Usuario(long id, String nombre, String email, String passwordHash, boolean activo, LocalDate fechaAlta) {
 		super();
-		this.idUsuario = idUsuario;
-		this.usuario = usuario;
-		this.correo = correo;
-		this.contrasena = contrasena;
-		this.fotoPerfil = fotoPerfil;
-		this.estado = estado;
-		this.intentosFallidos = intentosFallidos;
+		this.id = id;
+		this.nombre = nombre;
+		this.email = email;
+		this.passwordHash = passwordHash;
+		this.activo = activo;
+		this.fechaAlta = fechaAlta;
 	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPasswordHash() {
+		return passwordHash;
+	}
+
+	public void setPasswordHash(String passwordHash) {
+		this.passwordHash = passwordHash;
+	}
+
+	public boolean isActivo() {
+		return activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
+	}
+
+	public LocalDate getFechaAlta() {
+		return fechaAlta;
+	}
+
+	public void setFechaAlta(LocalDate fechaAlta) {
+		this.fechaAlta = fechaAlta;
+	}
+	
+	
 	/*
 	public void agregarRol(Rol roles) {
 		this.roles.add(roles);
 	}
 	*/
-	public int getIdUsuario() {
-		return idUsuario;
-	}
 	
-	public void setIdUsuario(int idUsuario) {
-		this.idUsuario = idUsuario;
-		
-	}
-	public String getUsuario() {
-		return usuario;
-	}
-	
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-		
-	}
-	public String getCorreo() {
-		return correo;
-	}
-	public void setCorreo(String correo) {
-		this.correo = correo;
-		
-	}
-	public String getContrasena() {
-		return contrasena;
-		
-	}
-	public void setContrasena(String contrasena) {
-		this.contrasena = contrasena;
-		
-	}
-	public String getFotoPerfil() {
-		return fotoPerfil;
-		
-	}
-	public void setFotoPerfil(String fotoPerfil) {
-		this.fotoPerfil = fotoPerfil;
-		
-	}
-	public Estado getEstado() {
-		return estado;
-	}
-	
-	public void setEstado(Estado estado) {
-		this.estado = estado;
-	}
-	
-	public int getIntentosFallidos() {
-		return intentosFallidos;
-		
-	}
-	public void setIntentosFallidos(int intentosFallidos) {
-		this.intentosFallidos = intentosFallidos;
-	}
-	
-	public void setFechaAlta() {
-		this.fechaAlta = LocalDate.now();
-	}
-	
-	public LocalDate getFechaAlta() {
-		return fechaAlta;
-	}
-	
-	public void setFechaBaja(LocalDate fechaBaja) {
-		this.fechaBaja= fechaBaja;
-	}
-	
-	public LocalDate getFechaBaja() {
-		return fechaBaja;
-	}
-	public void setUltimoIngreso() {
-		this.ultimoIngreso= LocalDateTime.now();
-	}
-	public LocalDateTime getUltimoIngreso() {
-		return ultimoIngreso;
-	}
 /*
 	public ArrayList<Rol> getRoles() {
 		return roles;
