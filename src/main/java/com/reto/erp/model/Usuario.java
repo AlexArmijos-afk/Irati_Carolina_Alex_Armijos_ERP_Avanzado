@@ -4,14 +4,29 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+//agregue los @---
+@Entity
+@Table(name="Usuario")
 public class Usuario {
-		private long id; 
+	@Id
+	private long id; 
+	@Column
 	private String nombre;
+	@Column
 	private String email;
+	@Column
 	private String passwordHash;
+	@Column
 	private boolean activo;
+	@Column
 	private LocalDate fechaAlta;
 
+	
+	//Porque esta esto aqui ??
 	//private ArrayList<Rol> roles = new ArrayList<Rol>();
 	
 	public Usuario() {
