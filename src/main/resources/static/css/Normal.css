@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.cont {
+    width: 90%;
+    max-width: 400px;
+    margin: 80px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    text-align: left;
+    margin: 10px 0 5px;
+}
+
+input, select {
+    padding: 8px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0077cc;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+}
+
+.btn:hover {
+    background-color: #005fa3;
+}
+
+.link {
+    display: block;
+    margin-top: 15px;
+    color: #0077cc;
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+.tabla {
+    margin: 0 auto; /* Centra horizontalmente */
+    border-collapse: collapse;
+    width: 100%; /* o un ancho específico, por ejemplo 80% */
+    max-width: 300px;
+}
+
+.tabla th, .tabla td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.tabla th {
+    background-color: #0077cc;
+    color: white;
+}
+

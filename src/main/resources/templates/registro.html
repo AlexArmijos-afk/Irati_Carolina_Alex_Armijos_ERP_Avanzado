@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuarios</title>
+    <link rel="stylesheet" href="../css/Normal.css">
+</head>
+<body>
+    <div class="cont">
+        <h1>Registro de Usuario</h1>
+        
+        <form action="#" th:action="@{/practica/usuario}" method="post" th:object="${usuario}">
+            <label for="nombre">Nombre:</label>
+            <input type="text" th:field="*{nombre}" required>
+
+            <label for="correo">Correo Electrónico:</label>
+            <input type="email" th:field="*{correo}" required>
+
+            <label for="contrasena">Contraseña:</label>
+            <input type="password" th:field="*{contrasena}" required>
+
+            <label for="rol">Rol:</label>
+            <select th:field="*{rol}">
+                <option value="admin">Administrador</option>
+                <option value="usuario">Usuario</option>
+            </select>
+
+            <input class="btn" type="submit" value="Enviar">
+        </form>
+        <a href="inicio" class="link">Volver a Bienvenida</a>
+    </div>
+</body>
+</html>
