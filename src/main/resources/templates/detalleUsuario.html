@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle Usuario</title>
+</head>
+<body>
+    <h1>Mi Perfil</h1>
+    <form action="/usuario/editar" method="post">
+        <input type="hidden" name="id" value="${usuario.id}">
+        
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" value="${usuario.nombre}" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="${usuario.email}" required><br><br>
+
+        <!-- Solo se muestra al administrador -->
+        <div th:if="${rolAdmin}">
+            <label for="rol">Rol:</label>
+            <select id="rol" name="rol">
+                <option value="USER" th:selected="${usuario.rol == 'USER'}">Usuario</option>
+                <option value="ADMIN" th:selected="${usuario.rol == 'ADMIN'}">Administrador</option>
+            </select><br><br>
+        </div>
+
+        <button type="submit">Actualizar</button>
+    </form>
+</body>
+</html>
