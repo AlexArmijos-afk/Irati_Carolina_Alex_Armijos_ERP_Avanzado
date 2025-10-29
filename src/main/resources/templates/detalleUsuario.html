@@ -14,6 +14,8 @@
 
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" value="${usuario.email}" required><br><br>
+        
+        <!-- agregar fecha alta y estado -->
 
         <!-- Solo se muestra al administrador -->
         <div th:if="${rolAdmin}">

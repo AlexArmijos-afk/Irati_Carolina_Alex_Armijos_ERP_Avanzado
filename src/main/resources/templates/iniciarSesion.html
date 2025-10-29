@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>Iniciar Sesión</h1>
-    <form action="/login" method="post">
+    <form th:action="/login" th:method="post"> <!-- agregar que manda a detalle usuario -->
         <label for="email">Email:</label>
         <input type="email" name="email" id="email" required><br><br>
 

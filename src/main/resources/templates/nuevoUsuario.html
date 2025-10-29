@@ -10,7 +10,7 @@
     <div class="cont">
         <h1>Registro de Usuario</h1>
         
-        <form action="#" th:action="@{/practica/usuario}" method="post" th:object="${usuario}">
+        <form action="#" th:action="@{/practica/usuario}" th:method="post" th:object="${usuario}">
             <label for="nombre">Nombre:</label>
             <input type="text" th:field="*{nombre}" required>
 
