@@ -9,14 +9,13 @@ import com.reto.erp.model.Usuario;
 
 @Controller
 @RequestMapping("/erp")
-public class registrarController {
+public class UsuarioController {
 	//variable para llamar a registro.html
-	final String registrar = "iniciarSesion";
+	final String inicio = "inicio";
 		
-	@GetMapping("/registrar")
-	public String registrarUsu(Model model) {
-		model.addAttribute("usuario", new Usuario());
-		return registrar;
+	@GetMapping("/bienvenido")
+	public String registrarUsu() {
+		return inicio;
 	}
 	
 }
