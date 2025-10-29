@@ -5,7 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-//agregue @--,campos y atributos
+
 @Entity
 @Table(name="Rol")
 public class Rol {
