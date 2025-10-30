@@ -1,23 +1,21 @@
 package com.reto.erp.cotroller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
+import com.reto.erp.model.Usuario;
 
 @Controller
-@RequestMapping("erp")
-public class registrarController {
+@RequestMapping("/erp")
+public class UsuarioController {
 	//variable para llamar a registro.html
-	final String registar = "registro";
-	
-	
-	
-	@GetMapping("registrar")
-	public String registrarUsu(@RequestParam String param) {
+	final String inicio = "inicio";
 		
-		return registar;
+	@GetMapping("/bienvenido")
+	public String registrarUsu() {
+		return inicio;
 	}
 	
 }

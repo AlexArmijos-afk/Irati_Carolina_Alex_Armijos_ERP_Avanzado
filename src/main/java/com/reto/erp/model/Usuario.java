@@ -24,10 +24,6 @@ public class Usuario {
 	private boolean activo;
 	@Column
 	private LocalDate fechaAlta;
-
-	
-	//Porque esta esto aqui ??
-	//private ArrayList<Rol> roles = new ArrayList<Rol>();
 	
 	public Usuario() {
 	}
@@ -89,21 +85,4 @@ public class Usuario {
 	public void setFechaAlta(LocalDate fechaAlta) {
 		this.fechaAlta = fechaAlta;
 	}
-	
-	
-	/*
-	public void agregarRol(Rol roles) {
-		this.roles.add(roles);
-	}
-	*/
-	
-/*
-	public ArrayList<Rol> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(ArrayList<Rol> roles) {
-		this.roles = roles;
-	}
-*/
 }

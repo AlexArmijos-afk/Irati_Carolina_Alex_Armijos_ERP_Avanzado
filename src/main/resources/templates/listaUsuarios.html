@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/css/estilo.css}">
+
+</head>
+<body>
+<header>
+	<p>LOGOTIPO</p>
+	<h2>Nombre Empresa</h2>
+</header>
+	
+<main>	
+	<section>
+		<h1>LISTADO de USUARIOS</h1>
+		
+		<!-- Agregar botón "Nuevo usuario" que redirige a "registro.html" -->
+		
+		<table>
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Rol</th>
+					<th>Nombre</th>
+					<th>Correo</th>
+					<th>Contraseña</th>
+					<th>Fecha alta</th>
+					<th>Estado</th>
+
+				</tr>
+			</thead>
+			
+			<tbody>
+				<tr th:each = "usuario : ${usuarios}">
+					<td th:text="${usuario.idUsuario}"></td>
+					<td>
+						<ul th:each = "rol : ${usuario.roles}">
+							<li> <img th:src="@{'/imagenes/roles/' + ${rol.nombre} + '.jpg'}" alt="Imagen no encontrada" width="50px" height="50px"/> </li>	 
+						</ul>
+					</td>
+					<td>
+						<a th:href=@{perfilUsuario}><span th:text="${usuario.usuario}"></span></a> <!-- falta hacer ref al usuario -->
+					</td>
+					<td th:text="${usuario.correo}"></td>
+					<td th:text="${usuario.contrasena}"></td>
+					<td th:text="${usuario.fechaAlta}"></td>
+					<td th:text="${usuario.estado}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+</main>	
+	
+    <footer>
+		<p>&copy; Copyright. Nombre Empresa. Todos los derechos reservados.</p>
+	</footer>
+</body>
+</html>
