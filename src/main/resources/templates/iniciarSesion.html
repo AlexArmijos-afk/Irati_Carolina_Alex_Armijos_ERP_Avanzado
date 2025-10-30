@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>Iniciar Sesión</h1>
-    <form th:action="/login" th:method="post"> <!-- agregar que manda a detalle usuario -->
+    <form > <!-- agregar que manda a detalle usuario --> <!-- quite esto para que se pueda visualizar la pagina th:action="/login" th:method="post" -->
         <label for="email">Email:</label>
         <input type="email" name="email" id="email" required><br><br>
 
@@ -15,5 +15,8 @@
 
         <button type="submit">Ingresar</button>
     </form>
+    
+    <a th:href="@{bienvenido}">Volver al inicio</a>
+    
 </body>
 </html>
