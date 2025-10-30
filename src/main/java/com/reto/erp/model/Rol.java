@@ -1,5 +1,7 @@
 package com.reto.erp.model;
 
+import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -48,6 +50,23 @@ public class Rol {
 	}
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+	
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(descripcion, id, nombre);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Rol other = (Rol) obj;
+		return Objects.equals(descripcion, other.descripcion) && id == other.id && Objects.equals(nombre, other.nombre);
 	}
 	
 	

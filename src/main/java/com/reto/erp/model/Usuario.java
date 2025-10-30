@@ -3,6 +3,7 @@ package com.reto.erp.model;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -85,4 +86,25 @@ public class Usuario {
 	public void setFechaAlta(LocalDate fechaAlta) {
 		this.fechaAlta = fechaAlta;
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(activo, email, fechaAlta, id, nombre, passwordHash);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Usuario other = (Usuario) obj;
+		return activo == other.activo && Objects.equals(email, other.email)
+				&& Objects.equals(fechaAlta, other.fechaAlta) && id == other.id && Objects.equals(nombre, other.nombre)
+				&& Objects.equals(passwordHash, other.passwordHash);
+	}
+	
+	
 }

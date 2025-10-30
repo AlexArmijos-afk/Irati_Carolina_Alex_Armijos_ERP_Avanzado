@@ -1,37 +1,55 @@
 package com.reto.erp.model;
 
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+//Esta seria la tabla que se crea en la BBDD pero es necesaria la clase UsuarioDepartamentoRolId 
+//que modela la clave primaria compuesta
 
 @Entity
 @Table(name = "usuario_departamento_rol") // nombre exacto de la tabla en la BD
-@IdClass(UsuarioDepartamentoRolId.class)
 public class UsuarioDepartamentoRol {
 	
-	@Id
-    private Long usuarioId;
+	@EmbeddedId
+    private UsuarioDepartamentoRolId id;
+	
+	//Aqui se tendrian que agregar mas atributos si la relacion triple los requiere como: fecha_alta o algo por el estilo
 
-    @Id
-    private Long departamentoId;
+	public UsuarioDepartamentoRol() {
+		super();
+	}
 
-    @Id
-    private Long rolId;
+	public UsuarioDepartamentoRol(Usuario usuario, Departamento departamento,Rol rol ) {
+		super();
+		this.id = new UsuarioDepartamentoRolId(usuario, departamento, rol);
+	}
 
-    @ManyToOne
-    @JoinColumn(name = "usuarioId", insertable = false, updatable = false)// columna en esta tabla (UsuarioDepartamentoRol) que actúa como FK.
-    private Usuario usuario;
+	public UsuarioDepartamentoRolId getId() {
+		return id;
+	}
 
-    @ManyToOne
-    @JoinColumn(name = "departamentoId", insertable = false, updatable = false)
-    private Departamento departamento;
-
-    @ManyToOne
-    @JoinColumn(name = "rolId", insertable = false, updatable = false)
-    private Rol rol;
+	public void setId(UsuarioDepartamentoRolId id) {
+		this.id = id;
+	}
+	
+	
+	// Métodos de acceso delegados para facilitar el uso
+    public Usuario getUsuario() {
+        return id.getUsuario();
+    }
+    
+    public Rol getRol() {
+        return id.getRol();
+    }
+    
+    public Departamento getDepartamento() {
+        return id.getDepartamento();
+    }
+	
 	
 	
 }
