@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/Normal.css">
+<title>Registrar Despartamento</title>
+</head>
+<body>
+	<div class="cont">
+		<h1>Registrar departamento</h1>
+		<form action="#" th:action="@{/erp/departamentoRegistrado}" th:method="post" th:object="${departamento}">
+		
+			<label for="nombre">Nombre:</label>
+			<input type="text" th:field="*{nombre}" required>
+			
+			<label for="descripcion">Descripción:</label>
+			<input type="text" th:field="*{descripcion}" required>
+			
+			<label for="activo">Estado:</label>
+			<select th:field="*{activo}">
+				<option value="true">Activo</option>
+				<option value="false">No activo</option>
+			</select>
+			<br>
+			<input class="btn" type="submit" value="Agregar">
+			
+		</form>
+		<a href="inicio" class="link">Volver a Bienvenida</a>
+	</div>
+</body>
+</html>
