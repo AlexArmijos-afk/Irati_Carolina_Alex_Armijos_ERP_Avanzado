@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/Normal.css">
+<title>regsitrar roles</title>
+</head>
+
+<body>
+	<div class="cont">
+	<h1>Registrar rol</h1>
+	<form action="#" th:action="@{/erp/rolRegistrado}" th:method="post" th:object="${rol}">
+		<label for="nombre">Nombre:</label>
+		<input type="text" th:field="*{nombre}" required>
+		
+		<label for="descripcion">Descripción:</label>
+		<!-- Cambiar desde css que no se pueda cambiar el tamaño de la caja -->
+		<textarea rows="5" cols="30" th:field="*{descripcion}" required></textarea>
+		<br>
+		<input class="btn" type="submit" value="Agregar">
+	</form>
+		<a href="inicio" class="link">Volver a Bienvenida</a>
+	</div>
+</body>
+
+</html>

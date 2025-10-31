@@ -19,4 +19,10 @@ public class UsuarioServiceImpl implements UsuarioService{
 		return usuariorepository.save(usuario);
 	}
 
+	@Override
+	public boolean buscarUsuario(Usuario usuario) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

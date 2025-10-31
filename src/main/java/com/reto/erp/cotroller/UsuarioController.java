@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.reto.erp.Service.Impl.RolServiceImpl;
 import com.reto.erp.Service.Impl.UsuarioServiceImpl;
+import com.reto.erp.model.Rol;
 import com.reto.erp.model.Usuario;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,14 +24,21 @@ public class UsuarioController {
 	@Qualifier("usuarioServiceImpl")
 	UsuarioServiceImpl usuarioserviceimpl;
 	
+	@Autowired
+	@Qualifier("rolServiceImpl")
+	RolServiceImpl rolserviceimpl;
+	
 	// variable para llamar a inicio.html
 	final String inicio = "inicio";
 
 	// variable para llamar a iniciarSesion.html
 	final String iniciarSesion = "iniciarSesion";
 
-	// variable para llamar a iniciarSesion.html
+	// variable para llamar a nuevoUsuario.html
 	final String nuevoUsuario = "nuevoUsuario";
+	
+	// variable para llamar a nuevoRol.html
+		final String nuevoRol = "nuevoRol";
 
 	@GetMapping("/bienvenido")
 	public String bienvenida() {
@@ -59,6 +68,22 @@ public class UsuarioController {
 	}
 	
 	
+	@GetMapping("registrarRol")
+	public String registrarRol(Model model) {
+		model.addAttribute("rol", new Rol());
+		return nuevoRol;
+	}
+	
+	@RequestMapping("rolRegistrado")
+	public String rolRegistrado(@ModelAttribute("rol") Rol rol,Model model) {
+		if(rol.getNombre()!=null) {
+			if (!rol.getNombre().isEmpty()) {
+				rolserviceimpl.aniadirRol(rol);
+				model.addAttribute("rol", new Rol());
+			}
+		}
+		return "redirect:/erp/registrarRol";
+	}
 	
 
 }
