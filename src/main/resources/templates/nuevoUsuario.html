@@ -8,25 +8,27 @@
 </head>
 <body>
     <div class="cont">
-        <h1>Registro de Usuario</h1>
+        <h1>Registrar Usuario</h1>
         
-        <form action="#" th:action="@{/practica/usuario}" th:method="post" th:object="${usuario}">
+        <form th:object="${usuario}" th:method="post">  <!-- quite esto para poder visualizar la pagina action="#" th:action="@{/practica/usuario}"   -->
+        
             <label for="nombre">Nombre:</label>
             <input type="text" th:field="*{nombre}" required>
 
             <label for="correo">Correo Electrónico:</label>
-            <input type="email" th:field="*{correo}" required>
+            <input type="email" th:field="*{email}" required>
 
             <label for="contrasena">Contraseña:</label>
-            <input type="password" th:field="*{contrasena}" required>
+            <input type="password" th:field="*{passwordHash}" required>
 
-            <label for="rol">Rol:</label>
-            <select th:field="*{rol}">
-                <option value="admin">Administrador</option>
-                <option value="usuario">Usuario</option>
+            <label for="activo">Activo:</label>
+            <select th:field="*{activo}">
+                <option value="true">Activo</option>
+                <option value="false">No activo</option>
             </select>
 
             <input class="btn" type="submit" value="Enviar">
+            
         </form>
         <a href="inicio" class="link">Volver a Bienvenida</a>
     </div>
