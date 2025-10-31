@@ -26,8 +26,8 @@ public class UsuarioController {
 	}
 	
 	@GetMapping("iniciarSesion")
-	public String putMethodName() {
-		//TODO: process PUT request
+	public String iniciarSesion() {
+		
 		
 		return iniciarSesion;
 	}
