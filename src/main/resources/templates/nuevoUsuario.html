@@ -10,7 +10,7 @@
     <div class="cont">
         <h1>Registrar Usuario</h1>
         
-        <form th:object="${usuario}" th:method="post">  <!-- quite esto para poder visualizar la pagina action="#" th:action="@{/practica/usuario}"   -->
+        <form action="#" th:action="@{/erp/usuarioRegistrado}" th:object="${usuario}" th:method="post">  <!-- quite esto para poder visualizar la pagina "   -->
         
             <label for="nombre">Nombre:</label>
             <input type="text" th:field="*{nombre}" required>

@@ -5,6 +5,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Objects;
 
+import org.hibernate.type.descriptor.java.LocalDateTimeJavaType;
+import org.hibernate.type.descriptor.jdbc.LocalDateTimeJdbcType;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -24,19 +27,23 @@ public class Usuario {
 	@Column
 	private boolean activo;
 	@Column
-	private LocalDate fechaAlta;
+	private LocalDateTime fechaAlta = LocalDateTime.now();
+	
+	
+	
 	
 	public Usuario() {
+		super();
 	}
-	
-	public Usuario(long id, String nombre, String email, String passwordHash, boolean activo, LocalDate fechaAlta) {
+
+
+	public Usuario(long id, String nombre, String email, String passwordHash, boolean activo) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.email = email;
 		this.passwordHash = passwordHash;
 		this.activo = activo;
-		this.fechaAlta = fechaAlta;
 	}
 
 	public long getId() {
@@ -79,11 +86,11 @@ public class Usuario {
 		this.activo = activo;
 	}
 
-	public LocalDate getFechaAlta() {
+	public LocalDateTime getFechaAlta() {
 		return fechaAlta;
 	}
 
-	public void setFechaAlta(LocalDate fechaAlta) {
+	public void setFechaAlta(LocalDateTime fechaAlta) {
 		this.fechaAlta = fechaAlta;
 	}
 
