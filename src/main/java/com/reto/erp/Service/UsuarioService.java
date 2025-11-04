@@ -8,5 +8,5 @@ public interface UsuarioService {
 	public abstract Usuario aniadirUsuario(Usuario usuario);
 	
 	//Metodo literal pero necesito que devuelva un boolean true si esta el usuario y false si no 
-	public abstract boolean buscarUsuario(Usuario usuario);
+	public abstract Long buscarUsuario(Usuario usuario);
 }

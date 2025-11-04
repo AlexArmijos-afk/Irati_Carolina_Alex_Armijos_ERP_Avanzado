@@ -55,7 +55,20 @@ public class UsuarioController {
 
 	@GetMapping("iniciarSesion")
 	public String iniciarSesion() {
+		
 		return iniciarSesion;
+	}
+	
+	@RequestMapping("detalleUsuario")
+	public String usuarioIniciado(@ModelAttribute("usuario") Usuario usuario, Model model) {
+		if (usuario.getEmail() != null && usuario.getPasswordHash() != null) {
+			if (!usuario.getEmail().isEmpty() || !usuario.getPasswordHash().isEmpty()) {
+				if(usuarioserviceimpl.buscarUsuario(usuario)) {
+					return "detalleUsuario";
+				}
+			}		
+		}
+		return "redirect:/erp/errorUsuarioInexistente";
 	}
 
 	@GetMapping("registrarUsuario")

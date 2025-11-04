@@ -6,9 +6,10 @@
 </head>
 <body>
     <h1>Iniciar Sesión</h1>
-    <form > <!-- agregar que manda a detalle usuario --> <!-- quite esto para que se pueda visualizar la pagina th:action="/login" th:method="post" -->
+    <form th:object="${usuario}" th:method="post" action="#"
+													th:action="@{/erp/detalleUsuario}"> <!-- agregar que manda a detalle usuario --> <!-- quite esto para que se pueda visualizar la pagina th:action="/login" th:method="post" -->
         <label for="email">Email:</label>
-        <input type="email" name="email" id="email" required><br><br>
+        <input type="email" name="email" id="email" placeholder="Ingrese su usuario" required autofocus><br><br>
 
         <label for="password">Contraseña:</label>
         <input type="password" name="password" id="password" required><br><br>
@@ -18,5 +19,6 @@
     
     <a th:href="@{bienvenido}">Volver al inicio</a>
     
+   
 </body>
 </html>
