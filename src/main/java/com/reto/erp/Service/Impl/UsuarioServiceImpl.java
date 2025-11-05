@@ -23,7 +23,7 @@ public class UsuarioServiceImpl implements UsuarioService{
 
 	@Override
 	public Long buscarUsuario(Usuario usuario) {
-	    Optional<Usuario> usuarioEncontrado = usuariorepository.findByEmailAndContrasena(
+	    Optional<Usuario> usuarioEncontrado = usuariorepository.findByEmailAndPasswordHash(
 	        usuario.getEmail(),
 	        usuario.getPasswordHash()
 	    );

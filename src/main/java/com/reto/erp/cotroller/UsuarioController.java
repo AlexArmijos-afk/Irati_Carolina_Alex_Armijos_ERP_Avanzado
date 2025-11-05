@@ -33,20 +33,11 @@ public class UsuarioController {
 	@Qualifier("departamentoServiceImpl")
 	DepartamentoServiceImpl departamentoserviceimpl;
 
-	// variable para llamar a inicio.html
-	final String inicio = "inicio";
-
-	// variable para llamar a iniciarSesion.html
-	final String iniciarSesion = "iniciarSesion";
-
-	// variable para llamar a nuevoUsuario.html
-	final String nuevoUsuario = "nuevoUsuario";
-
-	// variable para llamar a nuevoRol.html
-	final String nuevoRol = "nuevoRol";
-
-	// variable para llamar a nuevoRol.html
-	final String nuevoDepartamento = "nuevoDepartamento";
+	final String inicio = "inicio";							// inicio.html
+	final String iniciarSesion = "iniciarSesion";			// iniciarSesion.html
+	final String nuevoUsuario = "nuevoUsuario";				// nuevoUsuario.html
+	final String nuevoRol = "nuevoRol";						// nuevoRol.html
+	final String nuevoDepartamento = "nuevoDepartamento";	// nuevoRol.html
 
 	@GetMapping("/bienvenido")
 	public String bienvenida() {
@@ -55,7 +46,7 @@ public class UsuarioController {
 
 	@GetMapping("iniciarSesion")
 	public String iniciarSesion() {
-		
+
 		return iniciarSesion;
 	}
 	
@@ -63,7 +54,7 @@ public class UsuarioController {
 	public String usuarioIniciado(@ModelAttribute("usuario") Usuario usuario, Model model) {
 		if (usuario.getEmail() != null && usuario.getPasswordHash() != null) {
 			if (!usuario.getEmail().isEmpty() || !usuario.getPasswordHash().isEmpty()) {
-				if(usuarioserviceimpl.buscarUsuario(usuario)) {
+				if(usuarioserviceimpl.buscarUsuario(usuario) != null) {
 					return "detalleUsuario";
 				}
 			}		

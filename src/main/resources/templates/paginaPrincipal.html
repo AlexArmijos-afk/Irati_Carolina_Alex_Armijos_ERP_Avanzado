@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/css/estilo.css}">
+
+</head>
+<body>
+<header>
+	<p>LOGOTIPO</p>
+	<h2>Nombre Empresa</h2>
+</header>
+	
+<main>	
+	<section>
+		<h1>ERP - PLATAFORMA DE GESTIÓN</h1>
+		
+		<div>
+			<h2>Gestión Perfiles</h2>
+			<a th:href="@{nuevoUsuario}">Nuevo Usuario</a>
+			<a th:href="@{nuevoRol}">Nuevo Rol</a>
+			<a th:href="@{nuevoDepartamento}">Nuevo Departamento</a>
+		</div>
+		
+		<div>
+			<h2>Clientes</h2>
+		</div>
+		
+		<div>
+			<h2>Pedidos</h2>
+		</div>
+		
+		<div>
+			<h2>Factura</h2>
+		</div>
+
+	</section>
+</main>	
+	
+    <footer>
+		<p>&copy; Copyright. Nombre Empresa. Todos los derechos reservados.</p>
+	</footer>
+</body>
+</html>
