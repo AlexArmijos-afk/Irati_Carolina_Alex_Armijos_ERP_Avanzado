@@ -45,7 +45,7 @@ public class UsuarioController {
 	}
 
 	@GetMapping("iniciarSesion")
-	public String iniciarSesion() {
+	public String iniciarSesion(@ModelAttribute("usuario") Usuario usuario, Model model) {
 
 		return iniciarSesion;
 	}
