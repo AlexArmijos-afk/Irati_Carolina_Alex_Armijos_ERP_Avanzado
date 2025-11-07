@@ -1,12 +1,16 @@
 package com.reto.erp.Service;
 
+import java.util.Optional;
+
 import com.reto.erp.model.Usuario;
 
 public interface UsuarioService {
-	
-	// Metodo literal
+
 	public abstract Usuario aniadirUsuario(Usuario usuario);
+
+	public abstract Long buscarIdUsuario(Usuario usuario);
 	
-	//Metodo literal pero necesito que devuelva un boolean true si esta el usuario y false si no 
-	public abstract Long buscarUsuario(Usuario usuario);
+	public abstract Usuario buscarUsuario(Long id);
+	
+	public abstract Usuario modUsuario(Usuario usuario);
 }

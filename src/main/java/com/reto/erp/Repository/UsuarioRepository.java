@@ -11,6 +11,6 @@ import com.reto.erp.model.Usuario;
 @Repository("usuarioRepository")
 public interface UsuarioRepository extends JpaRepository<Usuario, Serializable>{
     Optional<Usuario> findByEmailAndPasswordHash(String email, String passwordHash);
-
+    Optional<Usuario> modificarUsuario(Usuario usuario);
     
 	}

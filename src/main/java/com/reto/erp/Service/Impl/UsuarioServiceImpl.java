@@ -22,18 +22,15 @@ public class UsuarioServiceImpl implements UsuarioService{
 	}
 
 	@Override
-	public Long buscarUsuario(Usuario usuario) {
+	public Long buscarIdUsuario(Usuario usuario) {
 	    Optional<Usuario> usuarioEncontrado = usuariorepository.findByEmailAndPasswordHash(
 	        usuario.getEmail(),
 	        usuario.getPasswordHash()
 	    );
 
-	    // Si existe, devuelve el ID
 	    if (usuarioEncontrado.isPresent()) {
 	        return usuarioEncontrado.get().getId();
 	    }
-
-	    // Si no existe, devuelve null o lanza una excepción (según tu lógica)
 	    return null;
 	}
 
@@ -41,4 +38,17 @@ public class UsuarioServiceImpl implements UsuarioService{
 	public void eliminarUsuario(Long id){
 		usuariorepository.deleteById(id);
 	}
+
+	@Override
+	public Usuario buscarUsuario(Long id) {
+		Usuario usuarioEncontrado = usuariorepository.getReferenceById(id);
+		return usuarioEncontrado;
+	}
+
+	@Override
+	public Usuario modUsuario(Usuario usuario) {
+		Optional<Usuario> uSalida = usuariorepository.modificarUsuario(usuario);
+		return null;
+	}
+
 }

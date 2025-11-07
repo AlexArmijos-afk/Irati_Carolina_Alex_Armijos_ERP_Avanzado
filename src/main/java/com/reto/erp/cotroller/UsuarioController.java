@@ -35,9 +35,10 @@ public class UsuarioController {
 
 	final String inicio = "inicio";							// inicio.html
 	final String iniciarSesion = "iniciarSesion";			// iniciarSesion.html
+	final String detalleUsuario = "detalleUsuario";
 	final String nuevoUsuario = "nuevoUsuario";				// nuevoUsuario.html
 	final String nuevoRol = "nuevoRol";						// nuevoRol.html
-	final String nuevoDepartamento = "nuevoDepartamento";	// nuevoRol.html
+	final String nuevoDepartamento = "nuevoDepartamento";	// nuevoDepto.html
 
 	@GetMapping("/bienvenido")
 	public String bienvenida() {
@@ -46,7 +47,6 @@ public class UsuarioController {
 
 	@GetMapping("iniciarSesion")
 	public String iniciarSesion(@ModelAttribute("usuario") Usuario usuario, Model model) {
-
 		return iniciarSesion;
 	}
 	
@@ -54,7 +54,10 @@ public class UsuarioController {
 	public String usuarioIniciado(@ModelAttribute("usuario") Usuario usuario, Model model) {
 		if (usuario.getEmail() != null && usuario.getPasswordHash() != null) {
 			if (!usuario.getEmail().isEmpty() || !usuario.getPasswordHash().isEmpty()) {
-				if(usuarioserviceimpl.buscarUsuario(usuario) != null) {
+				Long id = usuarioserviceimpl.buscarIdUsuario(usuario);
+				if(id != null) {
+					usuario = usuarioserviceimpl.buscarUsuario(id);
+					model.addAttribute("usuario", usuario);
 					return "detalleUsuario";
 				}
 			}		
@@ -62,12 +65,25 @@ public class UsuarioController {
 		return "redirect:/erp/errorUsuarioInexistente";
 	}
 
+	
+	@RequestMapping("actualizarUsuario")
+	public String actualizarUsuario(@ModelAttribute("usuario") Usuario usuario, Model model) {
+		usuarioserviceimpl.eliminarUsuario(usuario.getId());
+		
+		Usuario u = usuarioserviceimpl.aniadirUsuario(usuario);
+		model.addAttribute("usuario", u);
+		return detalleUsuario;
+		
+	}
+	
 	@GetMapping("registrarUsuario")
 	public String registrarUsu(Model model) {
 		model.addAttribute("usuario", new Usuario());
 		return nuevoUsuario;
 	}
-
+	
+	
+	
 	@RequestMapping("usuarioRegistrado")
 	public String usuarioRegistrado(@ModelAttribute("usuario") Usuario usuario, Model model) {
 		if (usuario.getEmail() != null) {
@@ -78,6 +94,8 @@ public class UsuarioController {
 		}
 		return "redirect:/erp/registrarUsuario";
 	}
+	
+	
 
 	@GetMapping("registrarRol")
 	public String registrarRol(Model model) {

@@ -6,14 +6,15 @@
 </head>
 <body>
     <h1>Mi Perfil</h1>
-    <form action="/usuario/paginaPrincipal" method="post">
-        <input type="hidden" name="id" value="${usuario.id}">
+    <form th:object="${usuario}" action="#"
+    						th:action="@{/erp/actualizarUsuario}" method="post">
+        <input type="hidden" th:field="*{id}" th:value="*{id}">
         
         <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" value="${usuario.nombre}" required><br><br>
+        <input type="text" th:field="*{nombre}" th:value="*{nombre}" required><br><br>
 
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" value="${usuario.email}" required><br><br>
+        <input type="email" th:field="*{email}" th:value="*{email}" required><br><br>
         
         <!-- agregar fecha alta y estado -->
 
