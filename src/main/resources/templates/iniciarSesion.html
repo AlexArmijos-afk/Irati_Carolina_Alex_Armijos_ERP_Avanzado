@@ -7,7 +7,7 @@
 <body>
     <h1>Iniciar Sesión</h1>
     <form th:object="${usuario}" th:method="post" action="#"
-													th:action="@{/erp/detalleUsuario}"> <!-- agregar que manda a detalle usuario --> <!-- quite esto para que se pueda visualizar la pagina th:action="/login" th:method="post" -->
+													th:action="@{/erp/paginaPrincipal}">
         <label for="email">Email:</label>
         <input type="email" th:field="*{email}" placeholder="Ingrese su usuario" required autofocus><br><br>
 

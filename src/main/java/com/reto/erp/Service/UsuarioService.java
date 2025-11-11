@@ -12,5 +12,4 @@ public interface UsuarioService {
 	
 	public abstract Usuario buscarUsuario(Long id);
 	
-	public abstract Usuario modUsuario(Usuario usuario);
 }

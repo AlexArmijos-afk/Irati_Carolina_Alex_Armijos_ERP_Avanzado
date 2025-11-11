@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.reto.erp.Repository.UsuarioRepository;
 import com.reto.erp.Service.Impl.DepartamentoServiceImpl;
 import com.reto.erp.Service.Impl.RolServiceImpl;
 import com.reto.erp.Service.Impl.UsuarioServiceImpl;
@@ -39,6 +40,7 @@ public class UsuarioController {
 	final String nuevoUsuario = "nuevoUsuario";				// nuevoUsuario.html
 	final String nuevoRol = "nuevoRol";						// nuevoRol.html
 	final String nuevoDepartamento = "nuevoDepartamento";	// nuevoDepto.html
+	final String paginaPrincipal = "paginaPrincipal";
 
 	@GetMapping("/bienvenido")
 	public String bienvenida() {
@@ -48,6 +50,11 @@ public class UsuarioController {
 	@GetMapping("iniciarSesion")
 	public String iniciarSesion(@ModelAttribute("usuario") Usuario usuario, Model model) {
 		return iniciarSesion;
+	}
+	
+	@RequestMapping("paginaPrincipal")
+	public String paginaPrincipal(@ModelAttribute("usuario") Usuario usuario, Model model) {
+		return paginaPrincipal;
 	}
 	
 	@RequestMapping("detalleUsuario")
@@ -68,9 +75,11 @@ public class UsuarioController {
 	
 	@RequestMapping("actualizarUsuario")
 	public String actualizarUsuario(@ModelAttribute("usuario") Usuario usuario, Model model) {
-		usuarioserviceimpl.eliminarUsuario(usuario.getId());
-		
-		Usuario u = usuarioserviceimpl.aniadirUsuario(usuario);
+		Usuario usuarioEncontrado = usuarioserviceimpl.buscarUsuario(usuario.getId());
+		usuarioEncontrado.setNombre(usuario.getNombre());
+		usuarioEncontrado.setEmail(usuario.getEmail());
+	
+		Usuario u = usuarioserviceimpl.aniadirUsuario(usuarioEncontrado);
 		model.addAttribute("usuario", u);
 		return detalleUsuario;
 		
@@ -130,5 +139,7 @@ public class UsuarioController {
 		}
 		return "redirect:/erp/registrarDepartamento";
 	}
+	
+	
 
 }

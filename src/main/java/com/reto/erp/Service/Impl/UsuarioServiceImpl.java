@@ -45,10 +45,5 @@ public class UsuarioServiceImpl implements UsuarioService{
 		return usuarioEncontrado;
 	}
 
-	@Override
-	public Usuario modUsuario(Usuario usuario) {
-		Optional<Usuario> uSalida = usuariorepository.modificarUsuario(usuario);
-		return null;
-	}
 
 }
