@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.reto.erp.model.Usuario;
 
 @Repository("usuarioRepository")
-public interface UsuarioRepository extends JpaRepository<Usuario, Serializable>{
+public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
     Optional<Usuario> findByEmailAndPasswordHash(String email, String passwordHash);
     
 	}

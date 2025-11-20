@@ -1,7 +1,5 @@
 package com.reto.erp.Service;
 
-import java.util.Optional;
-
 import com.reto.erp.model.Usuario;
 
 public interface UsuarioService {
