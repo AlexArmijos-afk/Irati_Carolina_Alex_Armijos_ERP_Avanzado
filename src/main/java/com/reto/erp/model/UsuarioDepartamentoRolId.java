@@ -12,16 +12,16 @@ import jakarta.persistence.ManyToOne;
 @Embeddable
 public class UsuarioDepartamentoRolId implements Serializable{
 	
-	@ManyToOne
-	@JoinColumn(name= "usuario_id") //mismo nombre en la tabla de la relación triple en BBDD 
+	@ManyToOne(optional = false)	//no puede ser null (JPA)
+	@JoinColumn(name= "usuario_id", nullable = false) //mismo nombre en la tabla de la relación triple en BBDD 
 	private Usuario usuario;
 	
-	@ManyToOne
-	@JoinColumn(name= "departamento_id") //mismo nombre en la tabla de la relación triple en BBDD 
+	@ManyToOne(optional = false)
+	@JoinColumn(name= "departamento_id", nullable = false) //mismo nombre en la tabla de la relación triple en BBDD 
     private Departamento departamento;
 	
-	@ManyToOne
-	@JoinColumn(name= "rol_id") //mismo nombre en la tabla de la relación triple en BBDD 
+	@ManyToOne(optional = false)
+	@JoinColumn(name= "rol_id", nullable = false) //mismo nombre en la tabla de la relación triple en BBDD 
     private Rol rol;
 	
 	public UsuarioDepartamentoRolId() {

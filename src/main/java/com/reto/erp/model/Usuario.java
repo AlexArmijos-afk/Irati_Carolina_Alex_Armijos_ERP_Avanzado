@@ -1,41 +1,35 @@
 package com.reto.erp.model;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Objects;
-
-import org.hibernate.type.descriptor.java.LocalDateTimeJavaType;
-import org.hibernate.type.descriptor.jdbc.LocalDateTimeJdbcType;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-//agregue los @---
+
 @Entity
 @Table(name="Usuario")
 public class Usuario {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY) //MySQL: auto_increment
 	private long id; 
-	@Column
+	@Column(nullable = false) //MySQL: not null
 	private String nombre;
-	@Column
+	@Column(nullable = false, unique = true)
 	private String email;
-	@Column
+	@Column(name = "password_hash", nullable = false)
 	private String passwordHash;
-	@Column
-	private boolean activo;
-	@Column
+	@Column(nullable = false)
+	private boolean activo = true; //MySQL: default = true
+	@Column(name = "fecha_alta", nullable = false)
 	private LocalDateTime fechaAlta = LocalDateTime.now();
-	
-	
-	
 	
 	public Usuario() {
 		super();
 	}
-
 
 	public Usuario(long id, String nombre, String email, String passwordHash, boolean activo) {
 		super();
