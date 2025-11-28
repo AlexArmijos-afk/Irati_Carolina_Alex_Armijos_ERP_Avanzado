@@ -16,6 +16,7 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //MySQL: auto_increment
 	private long id; 
+	
 	@Column(nullable = false) //MySQL: not null
 	private String nombre;
 	@Column(nullable = false, unique = true)
