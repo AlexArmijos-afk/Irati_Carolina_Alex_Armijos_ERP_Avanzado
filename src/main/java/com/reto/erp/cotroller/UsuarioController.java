@@ -42,6 +42,8 @@ public class UsuarioController {
 	final String nuevoDepartamento = "nuevoDepartamento";	// nuevoDepto.html
 	final String paginaPrincipal = "paginaPrincipal";
 
+	private String error = "error"; // error.html
+
 	@GetMapping("/bienvenido")
 	public String bienvenida() {
 		return inicio;
@@ -72,6 +74,10 @@ public class UsuarioController {
 		return "redirect:/erp/errorUsuarioInexistente";
 	}
 
+	@RequestMapping("errorUsuarioInexistente")
+	public String error() {
+		return error ;
+	}
 	
 	@RequestMapping("actualizarUsuario")
 	public String actualizarUsuario(@ModelAttribute("usuario") Usuario usuario, Model model) {
