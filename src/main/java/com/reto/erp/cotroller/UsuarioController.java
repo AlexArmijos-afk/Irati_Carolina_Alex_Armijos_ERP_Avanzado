@@ -84,7 +84,7 @@ public class UsuarioController {
 		Usuario usuarioEncontrado = usuarioserviceimpl.buscarUsuario(usuario.getId());
 		usuarioEncontrado.setNombre(usuario.getNombre());
 		usuarioEncontrado.setEmail(usuario.getEmail());
-	
+		usuarioEncontrado.setActivo(usuario.isActivo());
 		Usuario u = usuarioserviceimpl.aniadirUsuario(usuarioEncontrado);
 		model.addAttribute("usuario", u);
 		return detalleUsuario;
