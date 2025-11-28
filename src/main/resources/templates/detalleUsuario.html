@@ -3,38 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <title>Detalle Usuario</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
 </head>
 <body>
-    <h1>Mi Perfil</h1>
-    <form th:object="${usuario}" action="#"
-    						th:action="@{/erp/actualizarUsuario}" method="post">
-        <input type="hidden" th:field="*{id}" th:value="*{id}">
-        
-        <label for="nombre">Nombre:</label>
-        <input type="text" th:field="*{nombre}" th:value="*{nombre}" required><br><br>
 
-        <label for="email">Email:</label>
-        <input type="email" th:field="*{email}" th:value="*{email}" required><br><br>
-        
-        <!-- agregar fecha alta y estado -->
-          <label for="activo">Estado:</label>
-    <select th:field="*{activo}">
-        <option value="true" th:selected="${usuario.activo}">Activo</option>
-        <option value="false" th:selected="${!usuario.activo}">Inactivo</option>
-    </select><br><br>
+	<header>
+		<p>LOGOTIPO</p>
+		<h2>Nombre Empresa</h2>
+	</header>
 
-    <label>Fecha de Alta:</label>
-    <input type="text" th:value="${usuario.fechaAlta}" readonly><br>
-        <!-- Solo se muestra al administrador -->
-        <div th:if="${rolAdmin}">
-            <label for="rol">Rol:</label>
-            <select id="rol" name="rol">
-                <option value="USER" th:selected="${usuario.rol == 'USER'}">Usuario</option>
-                <option value="ADMIN" th:selected="${usuario.rol == 'ADMIN'}">Administrador</option>
-            </select><br><br>
-        </div>
+	<main>
+		<section class="login-container">
+			<div class="login-card">
+				<h1>Mi Perfil</h1>
+				    <form th:object="${usuario}" action="#"
+				    						th:action="@{/erp/actualizarUsuario}" method="post">
+				        <input type="hidden" th:field="*{id}" th:value="*{id}">
+				        <div class="form-group">
+					        <label for="nombre">Nombre:</label>
+					        <input type="text" th:field="*{nombre}" th:value="*{nombre}" required><br><br>
+						</div>
+						<div class="form-group">
+				        <label for="email">Email:</label>
+				        <input type="email" th:field="*{email}" th:value="*{email}" required><br><br>
+				        </div>
+						<div class="form-group">
+				        <!-- agregar fecha alta y estado -->
+				          <label for="activo">Estado:</label>
+				    <select th:field="*{activo}">
+				        <option value="true" th:selected="${usuario.activo}">Activo</option>
+				        <option value="false" th:selected="${!usuario.activo}">Inactivo</option>
+				    </select><br><br>
+				</div>
+						<div class="form-group">
+				    <label>Fecha de Alta:</label>
+				    <input type="text" th:value="${usuario.fechaAlta}" readonly><br>
+				    </div>
+						<div class="form-group">
+				        <!-- Solo se muestra al administrador -->
+				        <div th:if="${rolAdmin}">
+				            <label for="rol">Rol:</label>
+				            <select id="rol" name="rol">
+				                <option value="USER" th:selected="${usuario.rol == 'USER'}">Usuario</option>
+				                <option value="ADMIN" th:selected="${usuario.rol == 'ADMIN'}">Administrador</option>
+				            </select><br><br>
+				        </div>
+				</div>
+				        <button type="submit" class="ingresar">Actualizar</button>
+				    </form>
+			</div>
+		</section>
+	</main>
 
-        <button type="submit">Actualizar</button>
-    </form>
+	<footer>
+		<p>&copy; Copyright. Nombre Empresa. Todos los derechos
+			reservados.</p>
+	</footer>
+	
+    
 </body>
 </html>
