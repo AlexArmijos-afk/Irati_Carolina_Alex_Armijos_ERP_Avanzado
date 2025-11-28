@@ -17,7 +17,14 @@
         <input type="email" th:field="*{email}" th:value="*{email}" required><br><br>
         
         <!-- agregar fecha alta y estado -->
+          <label for="activo">Estado:</label>
+    <select th:field="*{activo}">
+        <option value="true" th:selected="${usuario.activo}">Activo</option>
+        <option value="false" th:selected="${!usuario.activo}">Inactivo</option>
+    </select><br><br>
 
+    <label>Fecha de Alta:</label>
+    <input type="text" th:value="${usuario.fechaAlta}" readonly><br>
         <!-- Solo se muestra al administrador -->
         <div th:if="${rolAdmin}">
             <label for="rol">Rol:</label>
