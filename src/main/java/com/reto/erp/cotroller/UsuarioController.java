@@ -9,10 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.reto.erp.Repository.UsuarioRepository;
-import com.reto.erp.Service.Impl.DepartamentoServiceImpl;
 import com.reto.erp.Service.Impl.RolServiceImpl;
 import com.reto.erp.Service.Impl.UsuarioServiceImpl;
-import com.reto.erp.model.Departamento;
 import com.reto.erp.model.Rol;
 import com.reto.erp.model.Usuario;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,16 +28,12 @@ public class UsuarioController {
 	@Qualifier("rolServiceImpl")
 	RolServiceImpl rolserviceimpl;
 
-	@Autowired
-	@Qualifier("departamentoServiceImpl")
-	DepartamentoServiceImpl departamentoserviceimpl;
-
+	
 	final String inicio = "inicio";							// inicio.html
 	final String iniciarSesion = "iniciarSesion";			// iniciarSesion.html
 	final String detalleUsuario = "detalleUsuario";
 	final String nuevoUsuario = "nuevoUsuario";				// nuevoUsuario.html
 	final String nuevoRol = "nuevoRol";						// nuevoRol.html
-	final String nuevoDepartamento = "nuevoDepartamento";	// nuevoDepto.html
 	final String paginaPrincipal = "paginaPrincipal";
 
 	private String error = "error"; // error.html
@@ -129,22 +123,9 @@ public class UsuarioController {
 		return "redirect:/erp/registrarRol";
 	}
 
-	@GetMapping("registrarDepartamento")
-	public String registrarDepartamento(Model model) {
-		model.addAttribute("departamento", new Departamento());
-		return nuevoDepartamento;
-	}
+	
 
-	@RequestMapping("departamentoRegistrado")
-	public String departamentoRegistrado(@ModelAttribute("departamento") Departamento departamento, Model model) {
-		if (departamento.getNombre() != null) {
-			if (!departamento.getNombre().isEmpty()) {
-				departamentoserviceimpl.aniadirDepartamento(departamento);
-				model.addAttribute("departamento", new Departamento());
-			}
-		}
-		return "redirect:/erp/registrarDepartamento";
-	}
+	
 	
 	
 

@@ -1,6 +1,8 @@
 package com.reto.erp.model;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -8,6 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -27,6 +30,9 @@ public class Usuario {
 	private boolean activo = true; //MySQL: default = true
 	@Column(name = "fecha_alta", nullable = false)
 	private LocalDateTime fechaAlta = LocalDateTime.now();
+	
+	@ManyToMany
+	private List<Rol> Roles;
 	
 	public Usuario() {
 		super();
