@@ -1,5 +1,7 @@
 package com.reto.erp.cotroller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -7,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.reto.erp.Repository.UsuarioRepository;
 import com.reto.erp.Service.Impl.RolServiceImpl;
@@ -87,22 +90,28 @@ public class UsuarioController {
 	
 	@GetMapping("registrarUsuario")
 	public String registrarUsu(Model model) {
-		model.addAttribute("usuario", new Usuario());
-		return nuevoUsuario;
+	    model.addAttribute("usuario", new Usuario());
+	    model.addAttribute("allRoles", rolserviceimpl.findAll());
+	    return nuevoUsuario;
 	}
+
+
 	
 	
 	
 	@RequestMapping("usuarioRegistrado")
-	public String usuarioRegistrado(@ModelAttribute("usuario") Usuario usuario, Model model) {
-		if (usuario.getEmail() != null) {
-			if (!usuario.getEmail().isEmpty()) {
-				usuarioserviceimpl.aniadirUsuario(usuario);
-				model.addAttribute("usuario", new Usuario());
-			}
-		}
-		return "redirect:/erp/registrarUsuario";
+	public String usuarioRegistrado(@ModelAttribute("usuario") Usuario usuario,
+	                                @RequestParam(required = false, name = "rolesIds") List<Long> rolesIds) {
+
+	    if (rolesIds != null && !rolesIds.isEmpty()) {
+	        List<Rol> roles = rolserviceimpl.findAllById(rolesIds);
+	        usuario.setRoles(roles);
+	    }
+
+	    usuarioserviceimpl.aniadirUsuario(usuario);
+	    return "redirect:/erp/registrarUsuario";
 	}
+
 	
 	
 

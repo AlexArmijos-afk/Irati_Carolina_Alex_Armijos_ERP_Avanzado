@@ -1,5 +1,7 @@
 package com.reto.erp.Service.Impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -19,5 +21,14 @@ public class RolServiceImpl implements RolService{
 	public Rol aniadirRol(Rol rol) {
 		return rolrepository.save(rol);
 	}
+
+	public List<Rol> findAll() {
+		return rolrepository.findAll();
+	}
+
+	public List<Rol> findAllById(List<Long> rolesIds) {
+	    return rolrepository.findAllById(rolesIds);
+	}
+
 
 }

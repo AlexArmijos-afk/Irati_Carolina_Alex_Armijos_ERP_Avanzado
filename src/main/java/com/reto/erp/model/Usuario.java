@@ -10,6 +10,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
@@ -32,19 +34,29 @@ public class Usuario {
 	private LocalDateTime fechaAlta = LocalDateTime.now();
 	
 	@ManyToMany
-	private List<Rol> Roles;
-	
+    @JoinTable(
+        name = "usuario_rol",  // nombre de la tabla intermedia
+        joinColumns = @JoinColumn(name = "usuario_id"),  // columna del usuario
+        inverseJoinColumns = @JoinColumn(name = "rol_id")  // columna del rol
+    )
+	private List<Rol> roles;
+
 	public Usuario() {
 		super();
+	    this.roles = new ArrayList<>();
+
 	}
 
-	public Usuario(long id, String nombre, String email, String passwordHash, boolean activo) {
+	public Usuario(long id, String nombre, String email, String passwordHash, boolean activo, LocalDateTime fechaAlta,
+			List<Rol> roles) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.email = email;
 		this.passwordHash = passwordHash;
 		this.activo = activo;
+		this.fechaAlta = fechaAlta;
+		this.roles = roles;
 	}
 
 	public long getId() {
@@ -95,9 +107,17 @@ public class Usuario {
 		this.fechaAlta = fechaAlta;
 	}
 
+	public List<Rol> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Rol> roles) {
+		this.roles = roles;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(activo, email, fechaAlta, id, nombre, passwordHash);
+		return Objects.hash(activo, email, fechaAlta, id, nombre, passwordHash, roles);
 	}
 
 	@Override
@@ -111,8 +131,10 @@ public class Usuario {
 		Usuario other = (Usuario) obj;
 		return activo == other.activo && Objects.equals(email, other.email)
 				&& Objects.equals(fechaAlta, other.fechaAlta) && id == other.id && Objects.equals(nombre, other.nombre)
-				&& Objects.equals(passwordHash, other.passwordHash);
+				&& Objects.equals(passwordHash, other.passwordHash) && Objects.equals(roles, other.roles);
 	}
+	
+	
 	
 	
 }

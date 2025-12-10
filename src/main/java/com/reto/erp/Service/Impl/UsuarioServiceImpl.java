@@ -1,5 +1,6 @@
 package com.reto.erp.Service.Impl;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.reto.erp.Repository.RolRepository;
 import com.reto.erp.Repository.UsuarioRepository;
 import com.reto.erp.Service.UsuarioService;
+import com.reto.erp.model.Rol;
 import com.reto.erp.model.Usuario;
 
 @Service("usuarioServiceImpl")
@@ -50,6 +52,12 @@ public class UsuarioServiceImpl implements UsuarioService{
 		Usuario usuarioEncontrado = usuariorepository.getReferenceById(id);
 		return usuarioEncontrado;
 	}
+
+	public Usuario buscarPorEmail(String email) {
+	    return usuariorepository.findByEmail(email).orElse(null);
+	}
+
+
 	
 	
 	

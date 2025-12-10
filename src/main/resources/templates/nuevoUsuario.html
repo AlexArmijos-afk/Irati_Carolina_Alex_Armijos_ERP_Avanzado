@@ -10,7 +10,7 @@
     <div class="cont">
         <h1>Registrar Usuario</h1>
         
-        <form action="#" th:action="@{/erp/usuarioRegistrado}" th:object="${usuario}" th:method="post">  <!-- quite esto para poder visualizar la pagina "   -->
+        <form action="#" th:action="@{/erp/usuarioRegistrado}" th:object="${usuario}" th:method="post">
         
             <label for="nombre">Nombre:</label>
             <input type="text" th:field="*{nombre}" required>
@@ -27,6 +27,15 @@
                 <option value="true">Activo</option>
                 <option value="false">No activo</option>
             </select>
+            
+            <label>Roles:</label>
+			<div th:each="rol : ${allRoles}">
+			    <input type="checkbox"
+			           name="rolesIds"
+			           th:value="${rol.id}" />
+			    <span th:text="${rol.nombre}"></span>
+			</div>
+
 
             <input class="btn" type="submit" value="Enviar">
             
