@@ -10,7 +10,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="Cliente")
+@Table(name="DireccionEnvio")
 public class DireccionEnvio {
 
 	@Id
