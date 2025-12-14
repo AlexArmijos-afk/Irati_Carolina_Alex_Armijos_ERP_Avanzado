@@ -14,14 +14,25 @@
 	
 <main>	
 	<section>
-		<h1>ERP - PLATAFORMA DE GESTIÓN</h1>
+		<form action="#" th:action="@{/erp/detalleUsuario}" th:method="post" th:object="${usuario}" id="formu">
+			 <input type="hidden" th:field="*{email}" placeholder="Ingrese su usuario" required autofocus>
+			 <input type="hidden" th:field="*{passwordHash}" required>
+			</form>
+			
+		<h1>ERP - PLATAFORMA DE GESTIÓN
+			
+		</h1>
+		
 		
 		<div>
 			<h2>Gestión Perfiles</h2>
-			<!-- falta un if para usuario Administrador -->
-			<a th:href="@{registrarUsuario}">Nuevo Usuario</a>
-			<a th:href="@{registrarRol}">Nuevo Rol</a>
-			<a th:href="@{registrarDepartamento}">Nuevo Departamento</a>
+			<div th:if="${esAdmin}">
+				<a th:href="@{registrarUsuario}">Nuevo Usuario</a>
+				<a th:href="@{registrarRol}">Nuevo Rol</a>				
+			</div>
+			<a href="#" onclick="document.getElementById('formu').submit(); return false;">
+    			Detalles de usuario</a>
+			
 		</div>
 		
 		<div>

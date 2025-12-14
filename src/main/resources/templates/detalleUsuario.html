@@ -49,7 +49,7 @@
 				            </select><br><br>
 				        </div>
 				        
-				        <label>Roles:</label>
+				        <label th:if="${esAdmin}">Roles:
 				        <div th:each="rol : ${allRoles}">
 						    <input type="checkbox"
 						           name="rolesIds"
@@ -57,6 +57,7 @@
 						           th:checked="${#lists.contains(usuario.roles, rol)}"/>
 						    <span th:text="${rol.nombre}"></span>
 						</div>
+						</label>	
 				</div>
 				        <button type="submit" class="ingresar">Actualizar</button>
 				    </form>

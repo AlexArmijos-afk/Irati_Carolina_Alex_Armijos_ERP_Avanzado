@@ -35,7 +35,7 @@ public class UsuarioController {
 	
 	final String inicio = "inicio";							// inicio.html
 	final String iniciarSesion = "iniciarSesion";			// iniciarSesion.html
-	final String detalleUsuario = "detalleUsuario";
+	final String detalleUsuario = "detalleUsuario";			//detalleUsuario.html
 	final String nuevoUsuario = "nuevoUsuario";				// nuevoUsuario.html
 	final String nuevoRol = "nuevoRol";						// nuevoRol.html
 	final String paginaPrincipal = "paginaPrincipal";
@@ -54,7 +54,23 @@ public class UsuarioController {
 	
 	@RequestMapping("paginaPrincipal")
 	public String paginaPrincipal(@ModelAttribute("usuario") Usuario usuario, Model model) {
-		return paginaPrincipal;
+		model.addAttribute("allRoles", rolserviceimpl.findAll());
+		if (usuario.getEmail() != null && usuario.getPasswordHash() != null) {
+			if (!usuario.getEmail().isEmpty() || !usuario.getPasswordHash().isEmpty()) {
+				Long id = usuarioserviceimpl.buscarIdUsuario(usuario);
+				if(id != null) {
+					usuario = usuarioserviceimpl.buscarUsuario(id);
+					boolean esAdmin = usuario.getRoles()
+	                         .stream()
+	                         .anyMatch(r -> "admin".equals(r.getNombre()));
+					model.addAttribute("esAdmin", esAdmin);
+					model.addAttribute("usuario", usuario);
+					return paginaPrincipal;
+				}
+			}		
+		}
+		return "redirect:/erp/errorUsuarioInexistente";
+		
 	}
 	
 	@RequestMapping("detalleUsuario")
@@ -65,6 +81,10 @@ public class UsuarioController {
 				Long id = usuarioserviceimpl.buscarIdUsuario(usuario);
 				if(id != null) {
 					usuario = usuarioserviceimpl.buscarUsuario(id);
+					boolean esAdmin = usuario.getRoles()
+	                         .stream()
+	                         .anyMatch(r -> "admin".equals(r.getNombre()));
+					model.addAttribute("esAdmin", esAdmin);
 					model.addAttribute("usuario", usuario);
 					return "detalleUsuario";
 				}
@@ -73,10 +93,10 @@ public class UsuarioController {
 		return "redirect:/erp/errorUsuarioInexistente";
 	}
 
-	@RequestMapping("errorUsuarioInexistente")
-	public String error() {
-		return error ;
-	}
+//	@RequestMapping("errorUsuarioInexistente")
+//	public String error() {
+//		return error ;
+//	}
 	
 	@RequestMapping("actualizarUsuario")
 	public String actualizarUsuario(@ModelAttribute("usuario") Usuario usuario, Model model,@RequestParam(required = false, name = "rolesIds") List<Long> rolesIds) {
