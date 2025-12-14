@@ -1,5 +1,6 @@
 package com.reto.erp.cotroller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +59,7 @@ public class UsuarioController {
 	
 	@RequestMapping("detalleUsuario")
 	public String usuarioIniciado(@ModelAttribute("usuario") Usuario usuario, Model model) {
+		model.addAttribute("allRoles", rolserviceimpl.findAll());
 		if (usuario.getEmail() != null && usuario.getPasswordHash() != null) {
 			if (!usuario.getEmail().isEmpty() || !usuario.getPasswordHash().isEmpty()) {
 				Long id = usuarioserviceimpl.buscarIdUsuario(usuario);
@@ -77,11 +79,19 @@ public class UsuarioController {
 	}
 	
 	@RequestMapping("actualizarUsuario")
-	public String actualizarUsuario(@ModelAttribute("usuario") Usuario usuario, Model model) {
+	public String actualizarUsuario(@ModelAttribute("usuario") Usuario usuario, Model model,@RequestParam(required = false, name = "rolesIds") List<Long> rolesIds) {
+		model.addAttribute("allRoles", rolserviceimpl.findAll());
 		Usuario usuarioEncontrado = usuarioserviceimpl.buscarUsuario(usuario.getId());
 		usuarioEncontrado.setNombre(usuario.getNombre());
 		usuarioEncontrado.setEmail(usuario.getEmail());
 		usuarioEncontrado.setActivo(usuario.isActivo());
+		if (rolesIds != null && !rolesIds.isEmpty()) {
+	        List<Rol> roles = rolserviceimpl.findAllById(rolesIds);
+	        usuarioEncontrado.setRoles(roles);
+	    } else {
+	        // Si no hay roles seleccionados, vaciamos la lista
+	        usuarioEncontrado.setRoles(new ArrayList<>()); // o Collections.emptyList()
+	    }
 		Usuario u = usuarioserviceimpl.aniadirUsuario(usuarioEncontrado);
 		model.addAttribute("usuario", u);
 		return detalleUsuario;

@@ -48,6 +48,15 @@
 				                <option value="ADMIN" th:selected="${usuario.rol == 'ADMIN'}">Administrador</option>
 				            </select><br><br>
 				        </div>
+				        
+				        <label>Roles:</label>
+				        <div th:each="rol : ${allRoles}">
+						    <input type="checkbox"
+						           name="rolesIds"
+						           th:value="${rol.id}" 
+						           th:checked="${#lists.contains(usuario.roles, rol)}"/>
+						    <span th:text="${rol.nombre}"></span>
+						</div>
 				</div>
 				        <button type="submit" class="ingresar">Actualizar</button>
 				    </form>
