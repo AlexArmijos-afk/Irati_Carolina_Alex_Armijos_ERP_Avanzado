@@ -96,7 +96,8 @@ public class UsuarioController {
 	}
 	
 	@RequestMapping("actualizarUsuario")
-	public String actualizarUsuario(@ModelAttribute("usuario") Usuario usuario, Model model,@RequestParam(required = false, name = "rolesIds") List<Long> rolesIds) {
+	public String actualizarUsuario(@ModelAttribute("usuario") Usuario usuario, Model model,
+			@RequestParam(required = false, name = "rolesIds") List<Long> rolesIds) {
 		model.addAttribute("allRoles", rolserviceimpl.findAll());
 		Usuario usuarioEncontrado = usuarioserviceimpl.buscarUsuario(usuario.getId());
 		usuarioEncontrado.setNombre(usuario.getNombre());
