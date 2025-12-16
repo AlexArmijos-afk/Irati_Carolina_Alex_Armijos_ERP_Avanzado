@@ -9,6 +9,7 @@ body {
   background: linear-gradient(135deg, #00233d 0%, #005a9e 100%);
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
   color: #00233d;
 }
 
@@ -16,6 +17,18 @@ header {
   background-color: #00233d;
   padding: 1.5rem 2rem;
   color: #87b8d4;
+}
+
+header p {
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+  color: #87b8d4;
+}
+
+header h2 {
+  font-size: 1.75rem;
+  color: #ffffff;
+  font-weight: 700;
 }
 
 main {
@@ -27,12 +40,13 @@ main {
 }
 
 section {
-  /*width: 100%;
-  max-width: 1400px;*/
+  width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
   background-color: #ffffff;
   border-radius: 16px;
   padding: 2.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 section h1 {
@@ -44,6 +58,31 @@ section h1 {
   letter-spacing: 1px;
 }
 
+section h2 {
+  color: #00233d;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.cont {
+  width: 100%;
+  max-width: 600px;
+  margin: 2rem auto;
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.cont h1 {
+  color: #00233d;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: 700;
+}
+
 .login-container {
   width: 100%;
   max-width: 420px;
@@ -53,6 +92,7 @@ section h1 {
   background-color: #ffffff;
   border-radius: 16px;
   padding: 3rem 2.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 .login-card h1 {
@@ -63,17 +103,43 @@ section h1 {
   font-weight: 700;
 }
 
-.login-card a.enlace {
-  display: block; /*Para que "acepte" el formato*/
-   text-decoration: none;
-   color: #005a9e;
-   font-size: 0.875rem;
-   margin-top: 1rem;
-   text-align: center;
+.login-card a.enlace,
+.login-card a {
+  display: block;
+  text-decoration: none;
+  color: #005a9e;
+  font-size: 0.875rem;
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: 500;
 }
 
-.login-card a.enlace:hover {
-  color:#00233d;
+.login-card a.enlace:hover,
+.login-card a:hover {
+  color: #00233d;
+}
+
+.error-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 2rem auto;
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 3rem 2.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.error-container h1 {
+  color: #ff6b6b;
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.error-container p {
+  color: #00233d;
+  margin-bottom: 2rem;
+  font-size: 1rem;
 }
 
 form {
@@ -96,26 +162,36 @@ label {
 }
 
 input[type="text"],
-input[type="password"] {
+input[type="email"],
+input[type="password"],
+input[type="number"],
+select {
   padding: 0.875rem 1rem;
   border: 2px solid #87b8d4;
   border-radius: 8px;
   font-size: 1rem;
   background-color: #ffffff;
   color: #00233d;
+  transition: border-color 0.3s ease;
 }
 
 input[type="text"]:focus,
-input[type="password"]:focus {
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+select:focus {
   outline: none;
   border-color: #005a9e;
+  box-shadow: 0 0 0 3px rgba(0, 90, 158, 0.1);
 }
 
 input[type="text"]::placeholder,
+input[type="email"]::placeholder,
 input[type="password"]::placeholder {
   color: #87b8d4;
 }
 
+button[type="submit"],
 .btn-submit {
   background-color: #ff6b6b;
   color: #ffffff;
@@ -127,10 +203,63 @@ input[type="password"]::placeholder {
   cursor: pointer;
   letter-spacing: 1px;
   margin-top: 0.5rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+button[type="submit"]:hover,
 .btn-submit:hover {
   background-color: #ff5252;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+}
+
+button[type="submit"]:active,
+.btn-submit:active {
+  transform: scale(0.98);
+}
+
+.ingresar {
+  display: inline-block;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  background: linear-gradient(to right, #8be3fc, #576bff);
+  box-shadow: 0 20px 30px -7px rgba(97, 118, 238, 0.5);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.ingresar:hover {
+  box-shadow: 0 10px 20px -5px rgba(97, 118, 238, 0.6);
+  transform: translateY(-2px);
+}
+
+.ingresar:active {
+  transform: scale(0.96) translateY(3px);
+}
+
+.nuevoUsuario {
+  display: inline-block;
+  padding: 0.875rem 1.5rem;
+  background-color: #ff6b6b;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.nuevoUsuario:hover {
+  background-color: #ff5252;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
 }
 
 footer {
@@ -139,16 +268,17 @@ footer {
   text-align: center;
   padding: 1.5rem 2rem;
   font-size: 0.875rem;
+  margin-top: auto;
 }
 
-/* TABLA */
-
 table {
- /*width: 100%;*/
+  width: 100%;
   border-collapse: collapse;
   background-color: #ffffff;
   border-radius: 8px;
   overflow: hidden;
+  margin-top: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 thead {
@@ -167,6 +297,7 @@ thead th {
 
 tbody tr {
   border-bottom: 1px solid #e0e0e0;
+  transition: background-color 0.2s ease;
 }
 
 tbody tr:hover {
@@ -184,7 +315,18 @@ tbody td {
   vertical-align: middle;
 }
 
-/* Role column with images */
+tbody td a {
+  color: #ff6b6b;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+tbody td a:hover {
+  color: #ff5252;
+  text-decoration: underline;
+}
+
 tbody td ul {
   list-style: none;
   padding: 0;
@@ -201,6 +343,7 @@ tbody td ul li {
 tbody td ul li img {
   border-radius: 8px;
   border: 2px solid #87b8d4;
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 tbody td ul li img:hover {
@@ -208,28 +351,37 @@ tbody td ul li img:hover {
   border-color: #005a9e;
 }
 
-.ingresar {
-  width: 120px;
-  height: 40px;
-  border: none;
-  border-radius: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  color: white;
-  font-weight: 600;
-  background: linear-gradient( to right,#8be3fc,#576bff);
-  box-shadow: 0 20px 30px -7px rgba(97, 118, 238, 0.5);
-  transition: all 0.3s ease-in-out;
-  cursor: pointer;
+input[type="hidden"] {
+  display: none;
 }
 
-.ingresar:hover {
-  box-shadow: none;
-  transform: translate(0px, 2.2px);
-}
-
-.ingresar:active {
-  transform: scale(0.96) translate(0px, 3.2px);
+@media (max-width: 768px) {
+  header {
+    padding: 1rem;
+  }
+  
+  main {
+    padding: 1rem;
+  }
+  
+  section {
+    padding: 1.5rem;
+  }
+  
+  .login-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .cont {
+    padding: 1.5rem;
+  }
+  
+  table {
+    font-size: 0.875rem;
+  }
+  
+  thead th,
+  tbody td {
+    padding: 0.75rem 0.5rem;
+  }
 }

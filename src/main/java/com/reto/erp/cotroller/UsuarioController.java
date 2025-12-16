@@ -113,6 +113,10 @@ public class UsuarioController {
 	        usuarioEncontrado.setRoles(new ArrayList<>()); // o Collections.emptyList()
 	    }
 		Usuario u = usuarioserviceimpl.aniadirUsuario(usuarioEncontrado);
+		boolean esAdmin = u.getRoles()
+                .stream()
+                .anyMatch(r -> "admin".equals(r.getNombre()));
+		model.addAttribute("esAdmin", esAdmin);
 		model.addAttribute("usuario", u);
 		return detalleUsuario;
 		
