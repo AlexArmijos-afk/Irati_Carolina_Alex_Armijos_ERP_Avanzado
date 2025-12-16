@@ -5,6 +5,8 @@ import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -15,6 +17,8 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name="Factura")
 public class Factura {
+	
+	public enum EstadoFactura {PENDIENTE, COBRADA, VENCIDA}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //MySQL: auto_increment
@@ -39,6 +43,7 @@ public class Factura {
 	@Column(name = "total_con_iva", nullable = false) //MySQL: not null
 	private float totalConIva;
 	
+	@Enumerated(EnumType.STRING)
 	@Column(name = "estado_cobro", nullable = false) //MySQL: not null
 	private EstadoFactura estado;
 	
