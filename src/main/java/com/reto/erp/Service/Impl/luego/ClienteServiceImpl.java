@@ -1,12 +1,12 @@
-package com.reto.erp.Service.Impl;
+package com.reto.erp.Service.Impl.luego;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.reto.erp.Repository.ClienteRepository;
-import com.reto.erp.Service.ClienteService;
-import com.reto.erp.model.Cliente;
+import com.reto.erp.Repository.luego.ClienteRepository;
+import com.reto.erp.Service.luego.ClienteService;
+import com.reto.erp.model.luego.Cliente;
 
 public class ClienteServiceImpl implements ClienteService{
 

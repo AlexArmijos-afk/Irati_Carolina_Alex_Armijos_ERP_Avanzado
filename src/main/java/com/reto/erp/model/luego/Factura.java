@@ -1,4 +1,4 @@
-package com.reto.erp.model;
+package com.reto.erp.model.luego;
 
 import java.time.LocalDateTime;
 import java.util.Objects;

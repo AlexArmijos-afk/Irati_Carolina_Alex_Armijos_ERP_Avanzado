@@ -1,7 +1,9 @@
-package com.reto.erp.model;
+package com.reto.erp.model.luego;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
+
+import com.reto.erp.model.Usuario;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

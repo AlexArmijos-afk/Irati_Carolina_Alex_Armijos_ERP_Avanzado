@@ -1,12 +1,12 @@
-package com.reto.erp.Service.Impl;
+package com.reto.erp.Service.Impl.luego;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.reto.erp.Repository.PedidoRepository;
-import com.reto.erp.Service.PedidoService;
-import com.reto.erp.model.Pedido;
+import com.reto.erp.Repository.luego.PedidoRepository;
+import com.reto.erp.Service.luego.PedidoService;
+import com.reto.erp.model.luego.Pedido;
 
 public class PedidoServiceImpl implements PedidoService{
 	

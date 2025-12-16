@@ -1,7 +1,8 @@
-package com.reto.erp.Service;
+package com.reto.erp.Service.luego;
 
 import java.util.List;
-import com.reto.erp.model.DireccionEnvio;
+
+import com.reto.erp.model.luego.DireccionEnvio;
 
 public interface DireccionEnvioService {
 	

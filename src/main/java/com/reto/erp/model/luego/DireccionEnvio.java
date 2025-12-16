@@ -1,4 +1,4 @@
-package com.reto.erp.model;
+package com.reto.erp.model.luego;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

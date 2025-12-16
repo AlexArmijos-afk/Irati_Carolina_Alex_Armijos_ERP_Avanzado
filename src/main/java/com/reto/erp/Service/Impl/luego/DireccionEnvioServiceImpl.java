@@ -1,12 +1,12 @@
-package com.reto.erp.Service.Impl;
+package com.reto.erp.Service.Impl.luego;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.reto.erp.Repository.DireccionEnvioRepository;
-import com.reto.erp.Service.DireccionEnvioService;
-import com.reto.erp.model.DireccionEnvio;
+import com.reto.erp.Repository.luego.DireccionEnvioRepository;
+import com.reto.erp.Service.luego.DireccionEnvioService;
+import com.reto.erp.model.luego.DireccionEnvio;
 
 public class DireccionEnvioServiceImpl implements DireccionEnvioService{
 	

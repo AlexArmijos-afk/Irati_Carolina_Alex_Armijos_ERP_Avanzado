@@ -1,12 +1,12 @@
-package com.reto.erp.Service.Impl;
+package com.reto.erp.Service.Impl.luego;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.reto.erp.Repository.FacturaRepository;
-import com.reto.erp.Service.FacturaService;
-import com.reto.erp.model.Factura;
+import com.reto.erp.Repository.luego.FacturaRepository;
+import com.reto.erp.Service.luego.FacturaService;
+import com.reto.erp.model.luego.Factura;
 
 public class FacturaServiceImpl implements FacturaService{
 	@Autowired

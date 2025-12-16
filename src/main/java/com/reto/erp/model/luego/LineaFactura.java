@@ -1,4 +1,4 @@
-package com.reto.erp.model;
+package com.reto.erp.model.luego;
 
 import java.math.BigDecimal;
 import java.util.Objects;

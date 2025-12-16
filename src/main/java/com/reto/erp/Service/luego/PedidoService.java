@@ -1,7 +1,8 @@
-package com.reto.erp.Service;
+package com.reto.erp.Service.luego;
 
 import java.util.List;
-import com.reto.erp.model.Pedido;
+
+import com.reto.erp.model.luego.Pedido;
 
 public interface PedidoService {
 	List<Pedido> findAll();

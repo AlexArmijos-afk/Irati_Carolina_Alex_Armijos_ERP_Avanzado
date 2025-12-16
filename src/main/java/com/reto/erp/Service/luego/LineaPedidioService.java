@@ -1,4 +1,4 @@
-package com.reto.erp.Service;
+package com.reto.erp.Service.luego;
 
 public interface LineaPedidioService {
 
