@@ -10,4 +10,8 @@ public interface UsuarioService {
 	
 	public abstract Usuario buscarUsuario(Long id);
 	
+	public void eliminarUsuario(Long id);
+	
+	public Usuario buscarPorEmail(String email);
+	
 }

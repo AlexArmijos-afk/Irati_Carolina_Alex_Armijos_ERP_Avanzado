@@ -12,13 +12,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.reto.erp.Repository.UsuarioRepository;
 import com.reto.erp.Service.Impl.RolServiceImpl;
 import com.reto.erp.Service.Impl.UsuarioServiceImpl;
 import com.reto.erp.model.Rol;
 import com.reto.erp.model.Usuario;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 @RequestMapping("/erp")
@@ -38,7 +35,7 @@ public class UsuarioController {
 	final String detalleUsuario = "detalleUsuario";			//detalleUsuario.html
 	final String nuevoUsuario = "nuevoUsuario";				// nuevoUsuario.html
 	final String nuevoRol = "nuevoRol";						// nuevoRol.html
-	final String paginaPrincipal = "paginaPrincipal";
+	final String paginaPrincipal = "paginaPrincipal";		// paginaPrincipal.html
 
 	private String error = "error"; // error.html
 
@@ -93,10 +90,10 @@ public class UsuarioController {
 		return "redirect:/erp/errorUsuarioInexistente";
 	}
 
-//	@RequestMapping("errorUsuarioInexistente")
-//	public String error() {
-//		return error ;
-//	}
+	@RequestMapping("errorUsuarioInexistente")
+	public String error() {
+		return error ;
+	}
 	
 	@RequestMapping("actualizarUsuario")
 	public String actualizarUsuario(@ModelAttribute("usuario") Usuario usuario, Model model,@RequestParam(required = false, name = "rolesIds") List<Long> rolesIds) {

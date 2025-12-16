@@ -21,11 +21,11 @@ public class RolServiceImpl implements RolService{
 	public Rol aniadirRol(Rol rol) {
 		return rolrepository.save(rol);
 	}
-
+	@Override
 	public List<Rol> findAll() {
 		return rolrepository.findAll();
 	}
-
+	@Override
 	public List<Rol> findAllById(List<Long> rolesIds) {
 	    return rolrepository.findAllById(rolesIds);
 	}
