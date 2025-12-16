@@ -10,30 +10,25 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name="Movimiento_Stock")
 public class MovimientoStock {
 
-    public enum TipoMovimiento {
-        ENTRADA,
-        SALIDA,
-        AJUSTE
-    }
+    public enum TipoMovimiento {ENTRADA,SALIDA,AJUSTE}
 
-    public enum Motivo {
-        VENTA,
-        COMPRA,
-        AJUSTE
-    }
+    public enum Motivo {VENTA,COMPRA,AJUSTE}
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long movimientoStockId;
 
-    @Column(nullable = false)
-    private long productoId; // FK → PRODUCTO.producto_id
+    @ManyToOne(optional = false)  
+    @JoinColumn(name = "producto_id", nullable = false)
+    private Producto productoId;
 
     @Column(nullable = false)
     private LocalDateTime fecha;
@@ -52,14 +47,15 @@ public class MovimientoStock {
     @Column
     private String referencia;
 
-    @Column(nullable = false)
-    private long hechoPor; // FK → USUARIO.usuario_id
+    @ManyToOne(optional = false)  
+    @JoinColumn(name = "usuario_id", nullable = false)
+    private Usuario hechoPor; // FK → USUARIO.usuario_id
 
     public MovimientoStock() {}
 
-    public MovimientoStock(long movimientoStockId, long productoId, LocalDateTime fecha,
+    public MovimientoStock(long movimientoStockId, Producto productoId, LocalDateTime fecha,
                            TipoMovimiento tipoMovimiento, int cantidad, Motivo motivo,
-                           String referencia, long hechoPor) {
+                           String referencia, Usuario hechoPor) {
         this.movimientoStockId = movimientoStockId;
         this.productoId = productoId;
         this.fecha = fecha;
@@ -78,11 +74,11 @@ public class MovimientoStock {
 		this.movimientoStockId = movimientoStockId;
 	}
 
-	public long getProductoId() {
+	public Producto getProductoId() {
 		return productoId;
 	}
 
-	public void setProductoId(long productoId) {
+	public void setProductoId(Producto productoId) {
 		this.productoId = productoId;
 	}
 
@@ -126,11 +122,11 @@ public class MovimientoStock {
 		this.referencia = referencia;
 	}
 
-	public long getHechoPor() {
+	public Usuario getHechoPor() {
 		return hechoPor;
 	}
 
-	public void setHechoPor(long hechoPor) {
+	public void setHechoPor(Usuario hechoPor) {
 		this.hechoPor = hechoPor;
 	}
     

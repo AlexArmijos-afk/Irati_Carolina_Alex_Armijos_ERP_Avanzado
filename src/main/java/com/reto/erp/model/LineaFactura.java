@@ -8,6 +8,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @SuppressWarnings("unused")
@@ -19,11 +21,13 @@ public class LineaFactura {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long lineaFacturaId;
 
-    @Column(nullable = false)
-    private long facturaId; // FK → FACTURA.factura_id
+    @ManyToOne(optional = false)  
+    @JoinColumn(name = "factura_id", nullable = false)
+    private Factura facturaId;
 
-    @Column(nullable = false)
-    private long productoId; // FK → PRODUCTO.producto_id
+    @ManyToOne(optional = false)  
+    @JoinColumn(name = "producto_id", nullable = false)
+    private Producto productoId;
 
     @Column(nullable = false)
     private String descripcionProducto;
@@ -48,7 +52,7 @@ public class LineaFactura {
 
     public LineaFactura() {}
 
-	public LineaFactura(long lineaFacturaId, long facturaId, long productoId, String descripcionProducto, int cantidad,
+	public LineaFactura(long lineaFacturaId, Factura facturaId, Producto productoId, String descripcionProducto, int cantidad,
 			BigDecimal precioUnitario, BigDecimal ivaPorcentaje, BigDecimal subtotalSinImpuestos,
 			BigDecimal subtotalIva, BigDecimal subtotalConImpuestos) {
 		super();
@@ -72,19 +76,19 @@ public class LineaFactura {
 		this.lineaFacturaId = lineaFacturaId;
 	}
 
-	public long getFacturaId() {
+	public Factura getFacturaId() {
 		return facturaId;
 	}
 
-	public void setFacturaId(long facturaId) {
+	public void setFacturaId(Factura facturaId) {
 		this.facturaId = facturaId;
 	}
 
-	public long getProductoId() {
+	public Producto getProductoId() {
 		return productoId;
 	}
 
-	public void setProductoId(long productoId) {
+	public void setProductoId(Producto productoId) {
 		this.productoId = productoId;
 	}
 

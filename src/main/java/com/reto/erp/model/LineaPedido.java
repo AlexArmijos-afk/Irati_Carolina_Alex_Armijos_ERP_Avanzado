@@ -8,6 +8,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,11 +20,13 @@ public class LineaPedido {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long lineaPedidoId;
 
-    @Column(nullable = false)
-    private long pedidoId; // FK → PEDIDO.pedido_id
+    @ManyToOne(optional = false)  
+    @JoinColumn(name = "pedido_id", nullable = false)
+    private Pedido pedidoId;
 
-    @Column(nullable = false)
-    private long productoId; // FK → PRODUCTO.producto_id
+    @ManyToOne(optional = false)  
+    @JoinColumn(name = "producto_id", nullable = false)
+    private Producto productoId;
 
     @Column(nullable = false)
     private String descripcionProducto;
@@ -47,7 +51,7 @@ public class LineaPedido {
 
     public LineaPedido() {}
 
-	public LineaPedido(long lineaPedidoId, long pedidoId, long productoId, String descripcionProducto, int cantidad,
+	public LineaPedido(long lineaPedidoId, Pedido pedidoId, Producto productoId, String descripcionProducto, int cantidad,
 			BigDecimal precioUnitario, BigDecimal ivaPorcentaje, BigDecimal subtotalSinImpuestos,
 			BigDecimal subtotalIva, BigDecimal subtotalConImpuestos) {
 		super();
@@ -71,19 +75,19 @@ public class LineaPedido {
 		this.lineaPedidoId = lineaPedidoId;
 	}
 
-	public long getPedidoId() {
+	public Pedido getPedidoId() {
 		return pedidoId;
 	}
 
-	public void setPedidoId(long pedidoId) {
+	public void setPedidoId(Pedido pedidoId) {
 		this.pedidoId = pedidoId;
 	}
 
-	public long getProductoId() {
+	public Producto getProductoId() {
 		return productoId;
 	}
 
-	public void setProductoId(long productoId) {
+	public void setProductoId(Producto productoId) {
 		this.productoId = productoId;
 	}
 
