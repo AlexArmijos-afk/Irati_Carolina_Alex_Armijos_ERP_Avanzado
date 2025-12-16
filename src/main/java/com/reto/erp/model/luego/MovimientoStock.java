@@ -1,6 +1,7 @@
 package com.reto.erp.model.luego;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 import com.reto.erp.model.Usuario;
 
@@ -129,6 +130,27 @@ public class MovimientoStock {
 
 	public void setHechoPor(Usuario hechoPor) {
 		this.hechoPor = hechoPor;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(cantidad, fecha, hechoPor, motivo, movimientoStockId, productoId, referencia,
+				tipoMovimiento);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		MovimientoStock other = (MovimientoStock) obj;
+		return cantidad == other.cantidad && Objects.equals(fecha, other.fecha)
+				&& Objects.equals(hechoPor, other.hechoPor) && motivo == other.motivo
+				&& movimientoStockId == other.movimientoStockId && Objects.equals(productoId, other.productoId)
+				&& Objects.equals(referencia, other.referencia) && tipoMovimiento == other.tipoMovimiento;
 	}
     
     

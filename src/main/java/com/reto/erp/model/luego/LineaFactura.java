@@ -147,6 +147,30 @@ public class LineaFactura {
 	public void setSubtotalConImpuestos(BigDecimal subtotalConImpuestos) {
 		this.subtotalConImpuestos = subtotalConImpuestos;
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(cantidad, descripcionProducto, facturaId, ivaPorcentaje, lineaFacturaId, precioUnitario,
+				productoId, subtotalConImpuestos, subtotalIva, subtotalSinImpuestos);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		LineaFactura other = (LineaFactura) obj;
+		return cantidad == other.cantidad && Objects.equals(descripcionProducto, other.descripcionProducto)
+				&& Objects.equals(facturaId, other.facturaId) && Objects.equals(ivaPorcentaje, other.ivaPorcentaje)
+				&& lineaFacturaId == other.lineaFacturaId && Objects.equals(precioUnitario, other.precioUnitario)
+				&& Objects.equals(productoId, other.productoId)
+				&& Objects.equals(subtotalConImpuestos, other.subtotalConImpuestos)
+				&& Objects.equals(subtotalIva, other.subtotalIva)
+				&& Objects.equals(subtotalSinImpuestos, other.subtotalSinImpuestos);
+	}
     
     
 

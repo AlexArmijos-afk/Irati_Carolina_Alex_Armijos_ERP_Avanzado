@@ -1,7 +1,7 @@
 package com.reto.erp.model.luego;
 
 import java.math.BigDecimal;
-
+import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -145,6 +145,30 @@ public class LineaPedido {
 
 	public void setSubtotalConImpuestos(BigDecimal subtotalConImpuestos) {
 		this.subtotalConImpuestos = subtotalConImpuestos;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(cantidad, descripcionProducto, ivaPorcentaje, lineaPedidoId, pedidoId, precioUnitario,
+				productoId, subtotalConImpuestos, subtotalIva, subtotalSinImpuestos);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		LineaPedido other = (LineaPedido) obj;
+		return cantidad == other.cantidad && Objects.equals(descripcionProducto, other.descripcionProducto)
+				&& Objects.equals(ivaPorcentaje, other.ivaPorcentaje) && lineaPedidoId == other.lineaPedidoId
+				&& Objects.equals(pedidoId, other.pedidoId) && Objects.equals(precioUnitario, other.precioUnitario)
+				&& Objects.equals(productoId, other.productoId)
+				&& Objects.equals(subtotalConImpuestos, other.subtotalConImpuestos)
+				&& Objects.equals(subtotalIva, other.subtotalIva)
+				&& Objects.equals(subtotalSinImpuestos, other.subtotalSinImpuestos);
 	}
     
     

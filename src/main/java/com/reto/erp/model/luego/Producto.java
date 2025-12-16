@@ -1,7 +1,7 @@
 package com.reto.erp.model.luego;
 
 import java.math.BigDecimal;
-
+import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -115,6 +115,27 @@ public class Producto {
 
 	public void setStockMinimo(int stockMinimo) {
 		this.stockMinimo = stockMinimo;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(descripcion, ivaPorcentaje, nombre, precioUnitario, productoId, sku, stockActual,
+				stockMinimo);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Producto other = (Producto) obj;
+		return Objects.equals(descripcion, other.descripcion) && Objects.equals(ivaPorcentaje, other.ivaPorcentaje)
+				&& Objects.equals(nombre, other.nombre) && Objects.equals(precioUnitario, other.precioUnitario)
+				&& productoId == other.productoId && Objects.equals(sku, other.sku) && stockActual == other.stockActual
+				&& stockMinimo == other.stockMinimo;
 	}
     
     
